@@ -1,0 +1,111 @@
+/* Filename: shopstyles.css (wird aus Admin/shopstyles.txt generiert)                            */
+/*                                                                                               */
+/* Modul: CSS                                                                                    */
+/*                                                                                               */
+/* Autoren: José Fontanil & Reto Glanzmann                                                       */
+/*                                                                                               */
+/* Zweck: Beinhaltet alle Schrift-, Farb-, und Hintergrundeinstellungen                          */
+/*                                                                                               */
+/* Sicherheitsstatus:        *** ADMIN ***                                                       */
+/*                                                                                               */
+/* Version: 1.4                                                                                  */
+/*                                                                                               */
+/* CVS-Version / Datum: $Id: shopstyles.css,v 1.11 2003/05/24 18:41:45 fontajos Exp $            */
+/*                                                                                               */
+/* ----------------------------------------------------------------------------------------------*/
+/* ! ! ! ! ! ! ! ! ! ! ! ! ! W I C H T I G E R   H I N W E I S ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! */
+/* ----------------------------------------------------------------------------------------------*/
+/* Wenn Sie die CSS-Einstellungen direkt im CSS-File auf Ihre Beduerfnisse anpassen wollen, be-  */
+/* arbeiten Sie keinesfalls das File "shopstyle.css". Dieses wird bei jedem Aufruf des Layout-   */
+/* management-Tools überschrieben. Manuelle Änderungen der CSS-Einstellungen dürfen deshalb      */
+/* nur im CSS-Template-File (csstemplate.txt) gemacht werden. Alle Ausdruecke in  sind Werte     */
+/* die in der Datenbank gespeichert sind. Nachdem Sie manuelle Änderungen gemacht haben, muessen */
+/* Sie das Web-Layoutmanagementtool aufrufen, um damit das neue "shopstyle.css" File zu erzeugen!*/
+/* ----------------------------------------------------------------------------------------------*/
+/*                                                                                               */
+/* ----------------------------------------------------------------------------------------------*/
+/* Stylesheetdatei für Webshop                                                                   */
+/* ----------------------------------------------------------------------------------------------*/
+
+/* Globale Einstellungen                                                                         */
+/* ---------------------                                                                         */
+
+/* Fontfamilie und Textgroesse für die Standardeinstellung und <p>-tag */
+body  { font-size:16px; font-family: Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+P { font-size:16px; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+
+/* Eingabefelder benutzen ein vordefiniertes Fontset mit fester Breite, da Netscape 4.7 sonst die Feldlaenge nicht ordungsgemaess darstellt */
+input, textarea { font-family: Courier New, Courier, Monaco }
+
+
+/* Einstellungen für linkes Frame (Kategorienliste)                                              */
+/* ------------------------------------------------                                              */
+
+/* Hintergrundfarbe und Hintergrundbild */
+/* Die Verdoppelung der body-Zeile ist fuer die Opera/Windows-Kombination notwendig              */
+/* Netscape 4.xx interpretiert fuer die Links nur die dritte Zeile */
+body.left { color:#ffffff; background:#759cff;  }
+body.left { color:#ffffff; background:#759cff;  }
+body.left, a.left { color:#ffffff; text-decoration:none; font-style:normal; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular; font-size:16px; font-weight:bold;}
+
+/* Farbe und Schriftart der Links */
+a:link.left { color:#ffffff; font-style:normal; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular; font-size:16px; font-weight:bold; text-decoration:none; }
+a:visited.left { color:#ffffff; font-style:normal; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular; font-size:16px; font-weight:bold; text-decoration:none; }
+a:active.left { color:#ffffff; font-style:normal; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular; font-size:16px; font-weight:bold; text-decoration:none; }
+a:hover.left { color:#c80000;  font-style:normal; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular; font-size:16px; font-weight:bold; text-decoration:none; }
+
+
+/* Einstellungen für oberes Frame (Top-Frame) */
+/* ------------------------------------------ */
+
+/* Hintergrundfarbe und Hintergrundbild */
+/* Verdoppelung fuer Netscape 4.xx noetig */
+body.top, tr.top ,td.top, a.top { background:#759cff;  font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+
+/* Titel-Tag Einstellungen fuer den Shopnamen im Top-Frame */
+td.top_titel { color:#ffffff; font-style:italic; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular; font-size:30px; font-weight:bold; text-decoration:none; }
+
+/* Titel-Tag Einstellungen fuer den Administrationsstern im Top-Frame */
+td.top_stern { color:#ffffff; font-style:normal; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular; font-size:15px; font-weight:normal; text-decoration:none; }
+a:link.top_stern { color:#ffffff; font-style:normal; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular; font-size:15px; font-weight:normal; text-decoration:none; }
+a:visited.top_stern { color:#ffffff; font-style:normal; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular; font-size:15px; font-weight:normal; text-decoration:none; }
+a:active.top_stern { color:#ffffff; font-style:normal; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular; font-size:15px; font-weight:normal; text-decoration:none; }
+
+
+/* Einstellungen für Hauptframe Frame (Shopartikel) */
+/* ------------------------------------------------ */
+
+/* Hintergrundfarbe und Hintergrundbild */
+/* Zweite Zeile wird nur fuer Netscape 4.xx benoetigt */
+body.content { color:#000000; background: #d3d3d3; background-image:url(../Bilder/bg_main.jpg); }
+a.content, tr.content, td.content { color:#000000; font-style:normal; font-size:16px; text-decoration:none; font-weight:normal; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+
+/* Farbe und Schriftart der Links */
+a:link.content { color:#00008b; font-style:normal; font-size:16px; text-decoration:underline; font-weight:normal; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+a:visited.content { color:#00008b; font-style:normal; font-size:16px; text-decoration:underline; font-weight:normal; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+a:active.content { color:#00008b; font-style:normal; font-size:16px; text-decoration:underline; font-weight:normal; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+
+/* Farbe und Schriftart der Ueberschriften */
+h1.content { color:#000000; font-style:normal; font-size:25px; text-decoration:none; font-weight:bold; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+h2.content { color:#000000; font-style:normal; font-size:23px; text-decoration:none; font-weight:bold; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+h3.content { color:#000000; font-style:normal; font-size:20px; text-decoration:none; font-weight:bold; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+h4.content { color:#000000; font-style:normal; font-size:16px; text-decoration:none; font-weight:bold; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+h5.content { color:#000000; font-style:normal; font-size:12px; text-decoration:none; font-weight:bold; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+
+/* Eingabefelder benutzen ein vordefiniertes Fontset mit fester Breite, da Netscape 4.7 sonst die Feldlaenge nicht ordungsgemaess darstellt */
+input.content, textarea.content { font-family: Courier, Courier New, Monaco }
+
+/* Spezielle Linkklasse, wo der Link nicht unterstrichen wird (für Suchresultat)                 */
+/* ----------------------------------------------------------------------------                  */
+body.no_decoration { color:#000000; background: #d3d3d3; background-image:url(../Bilder/bg_main.jpg); }
+body.no_decoration, a.no_decoration, tr.no_decoration, td.no_decoration { text-decoration:none; color:#000000; font-style:normal; font-size:16px; text-decoration:none; font-weight:normal; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+a:link.no_decoration { color:#000000; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular; font-size:16px; "font-weight:; text-decoration:none; }
+a:visited.no_decoration { color:#000000; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular; font-size:16px; font-weight:; text-decoration:none; }
+a:active.no_decoration { color:#000000; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular; font-size:16px; font-weight:; text-decoration:none; }
+h1.no_decoration { color:#000000; font-style:normal; font-size:25px; text-decoration:none; font-weight:bold; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+h2.no_decoration { color:#000000; font-style:normal; font-size:23px; text-decoration:none; font-weight:bold; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+h3.no_decoration { color:#000000; font-style:normal; font-size:20px; text-decoration:none; font-weight:bold; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+h4.no_decoration { color:#000000; font-style:normal; font-size:16px; text-decoration:none; font-weight:bold; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+h5.no_decoration { color:#000000; font-style:normal; font-size:12px; text-decoration:none; font-weight:bold; font-family:Arial,Helvetica,Geneva,Swiss,SunSans-Regular }
+
+/* End of file ----------------------------------------------------------------                   */

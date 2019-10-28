@@ -1,0 +1,37 @@
+shop/ProdukteBilder
+-------------------
+
+Das Verzeichnis Produktebilder wird für die Speicherung der Artikelbilder benoetigt.
+
+Die Bilder sind sind im Format <Artikel_ID>_<Bildtyp>.<Bildformat> gespeichert.
+<Artikel_ID> -> die in der Datenbank gespeicherte Artikel_ID des Artikels oder
+                eine beliebige Bezeichnung, die aber bei der Klein- und Grossansicht
+                gleich lauten muss!
+<Bildtyp>    -> gr = Orginal hoch geladenes Produktebild
+                kl = Thumbnail (Kleinansicht) eines Orginal Produktebilds
+<Bildformat> -> unterstuetzt werden zur Zeit: jpg, gif und png
+
+Alle Bilddateien in diesem Verzeichnis koennen ohne weiteres per FTP durch
+andere (mit gleichem Dateienamen) ersetzt werden. Bei eingeschaltetem Safe-Mode
+bitte nicht vergessen anschliessend die UNIX-Dateirechte auf 777 zu setzen. Auch
+der Ordner ProdukteBilder muss 777 haben.
+
+Die Produktebilder koennen natuerlich auch per FTP in dieses Verzeichnis (ProdukteBilder)
+hochgeladen werden. Die Kleinansicht muss aber dann manuell mit einem Bildbearbeitungs-
+programm erstellt werden.
+
+Vorgehen fuer den Upload eigener Bilder (am Beispiel 'meinbild.jpg')
+1. Grosse Ansicht des Bildes gemaess o.g. Konvention umbenennen -> 'meinbild_gr.jpg'
+2. Kleinansicht mit beliebigem Bildbearbeitungstool erzeugen
+3. Kleinansicht gemaess o.g. Konvention abspeichern  -> 'meinbild_kl.jpg'
+3. Beide Bilder in diesen Ordner (shop/ProdukteBilder) hochladen
+4. Artikelbild beliebigem(n) Artikel(n) zuordnen
+
+Datenbank:
+Die Artikel_ID's sind in der Tabelle 'Artikel' gespeichert. In dieser Tabelle
+ist auch die Zuordnung der Bilder zu den Artikeln (Bild_gross, Bild_klein).
+
+===================================================================================
+Dokument ID: $Id: info.txt,v 1.6 2003/05/24 18:41:45 fontajos Exp $
+PhPepperShop v.1.4
+

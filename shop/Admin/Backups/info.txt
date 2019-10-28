@@ -1,0 +1,22 @@
+shop/Admin/Backups
+------------------
+
+Das Verzeichnis Backups wird fuer die Speicherung der Shop-Datenbank-
+Backups benoetigt.
+
+Aufbau der Dateinamen: <Backup-ID>.sql
+
+Die neueste Datei hat die tiefste Backup_ID (=0), die älteste Datei hat die
+höchste Backup_ID.
+
+Die in diesem Verzeichnis enthaltenen Datenbank-Backups sollten periodisch
+per SSH oder FTP auf einen entfernten Rechner kopiert werden. Dies ermoeglicht
+die Wiederherstellung des Shops bei einem Totalausfalls des Servers.
+
+Um ein entfernt gespeichertes Backup wieder in den Shop einzuspielen, muss
+es in dieses Verzeichnis hochgeladen werden. Danach kann per Shopadministration
+das Backup eingelesen werden. Weitere Informationen gibt es in der Dokumentation.
+
+=================================================================================
+Dokument ID: $Id: info.txt,v 1.5 2003/05/24 18:41:42 fontajos Exp $
+PhPepperShop v.1.4

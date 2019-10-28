@@ -1,0 +1,133 @@
+<?php
+  // Filename: index.php (wird aus <shopdir>/shop/Admin/indextemplate.txt generiert)
+  //
+  // Modul: PhPeppershop, Frameset und JavaScripterkennung
+  //
+  // Autoren: José Fontanil & Reto Glanzmann, Zuercher Hochschule Winterthur
+  //
+  // Zweck: Zeigt die Frames an, erste Seite nach index.html redirect, JavaScripterkennung
+  //        Diese Datei wird aus <shopdir>/shop/Admin/indextemplate.txt erzeugt (Layout-Management)
+  //
+  // Sicherheitsstatus:        *** ADMIN ***
+  //
+  // Version: 1.4
+  //
+  // CVS-Version / Datum: $Id: indextemplate.txt,v 1.28 2003/08/14 13:27:30 glanzret Exp $
+  //
+  // -----------------------------------------------------------------------
+  // Damit jedes andere Modul ueberpruefen kann ob dieses hier schon "included" ist
+  // wird folgende Vairable auf true gesetzt (Name = Name des Moduls ohne .php)
+  $index = true;
+
+  // -----------------------------------------------------------------------
+  // Weitere Konfigurationsschritte vornehmen:
+  // Session Management einbinden und Session starten:
+  if (!isset($session_mgmt)) {include_once("shop/session_mgmt.php");}
+  // Wenn der 'Haendlermodus' aktiviert wurde: Test ob Kunde eingeloggt ist
+  // Pfadkonstante fuer USER_AUTH.php definieren (USER_AUTH.php --> Haendlermodus)
+  define('AUTH_VIA_INDEX', 'yes');
+  define('AUTH_PATH','./shop/');
+  if (!isset($USER_AUTH)) {include_once("shop/USER_AUTH.php");}
+
+  // Deep-Link Auswertung:
+  // Es ist moeglich, den Shop von einem Externen Link so aufzurufen, dass dem Kunden direkt ein bestimmter Artikel gezeigt wird. Dazu muss jedoch die Kategorie- und die Artikel-ID
+  // des gewuenschten Artikels bekannt sein. Die ID's koennen direkt aus der Datenbank ausgelesen werden. Eine andere Möglichkeit, die Kategorie- und Artikel-ID herauszufinden
+  // besteht darin, den gewünschten Artikel in der Artikelsuche anzeigen zu lassen (einen Suchbegriff eingeben, der im gewuenschten Artikel enthalten ist, damit dieser im Suchresultat
+  // angezeigt wird). Wenn man dann beim Suchergebnis mit der Maus ueber den Button "Artikel anzeigen" faehrt, sieht man im Browser die Kategorie_ID (Kategorie_ID=..) und die
+  // Artikel_ID (Ziel..))). Aus diesen beiden Informationen kann dann der Link in den Shop zusammengebaut werden:
+  // 'url_zum_shop'/index.php?Kategorie_ID='Kategorie_ID'&Artikel_ID='Artikel_ID'
+  // z.B. http://www.phpeppershop.com/demoshop/index.php?Kategorie_ID=2&Artikel_ID=6
+  // Die Artikel_ID kann weggelassen werden, wenn man einfach die Kategorie anzeigen will. Die Kategorie_ID muss immer angegeben werden!!
+  $contentframe = ""; // Initialisierung
+  if ($Kategorie_ID == ""){
+      $contentframe = "<frame name=\"content\" src=\"shop/Frameset/content.html\" scrolling=\"AUTO\" frameborder=\"0\" noresize></frame>";
+  }
+  else {
+      $contentframe = "<frame name=\"content\" src=\"shop/USER_ARTIKEL_HANDLING_AUFRUF.php?darstellen=1&amp;Kategorie_ID=".$HTTP_GET_VARS["Kategorie_ID"]."&amp;Ziel_ID=".$HTTP_GET_VARS["Artikel_ID"]."#Ziel".$HTTP_GET_VARS["Artikel_ID"]."\" scrolling=\"AUTO\" frameborder=\"0\" noresize></frame>";
+  }
+
+  // JavaScript Erkennung: Wenn JavaScript im Browser eingeschaltet ist, so wird als Parameter die Variable
+  // javascript_enabled auf true (String) gesetzt und somit weiss das naechste PHP-Script, dass JavaScript vorhanden
+  // ist. Dies ist insofern wichtig, als dass die Kategoriennavigation via zweiframes-Aufruf die Usability erhoeht.
+  // Fuer Suchmaschinen hingegen ist es zwingend notwendig, dass Links ohne JavaScript realisiert sind - hier kommt
+  // das default Frameset im <noscript>-Bereich zum Zug. Es wird hier keine Variable javascript_enabled gesetzt.
+
+  // Definition des via JavaScript erzeugten HTML-Framesets:
+  $javascript_frameset_output = "document.write ('<frameset rows=\"<<top_height>>,*\" border=\"0\" frameborder=\"0\" framespacing=\"0\">')\n";
+  $javascript_frameset_output.= "document.write ('  <frame name=\"top\" marginheight=\"0\" marginwidth=\"10\" src=\"shop/Frameset/top.php?javascript_enabled=true&amp;".session_name()."=".session_id()."&amp;last_login=".$last_login."\" scrolling=\"NO\" frameborder=\"0\" noresize></frame>')\n";
+  $javascript_frameset_output.= "document.write ('  <frameset cols=\"<<left_width>>,*\" border=\"0\" frameborder=\"0\" framespacing=\"0\">')\n";
+  $javascript_frameset_output.= "document.write ('    <frame name=\"left\" src=\"shop/USER_ARTIKEL_HANDLING_AUFRUF.php?javascript_enabled=true&amp;darstellen=4&amp;".session_name()."=".session_id()."\" scrolling=\"AUTO\" frameborder=\"0\" noresize></frame>')\n";
+  $javascript_frameset_output.= "document.write ('    ".$contentframe."')\n";
+  $javascript_frameset_output.= "document.write ('  </frameset>')\n";
+  $javascript_frameset_output.= "document.write ('</frameset>')\n";
+
+  // Ausgabe des HTML-Dokuments starten. Als erstes den HTML-Header ausgeben:
+  echo "<html>\n";
+  echo "<head>\n";
+  echo "    <title>Shop</title>\n";
+  echo "    <meta HTTP-EQUIV=\"content-type\" CONTENT=\"text/html;charset=iso-8859-1\">\n";
+  echo "    <meta HTTP-EQUIV=\"language\" CONTENT=\"de\">\n";
+  echo "    <meta HTTP-EQUIV=\"author\" CONTENT=\"Jose Fontanil and Reto Glanzmann\">\n";
+  echo "    <meta NAME=\"robots\" CONTENT=\"all\">\n";
+  echo "    <link rel=STYLESHEET href=\"shop/shopstyles.css\" type=\"text/css\">\n";
+  echo "</head>\n\n";
+
+  // JavaScript Frameset Erstellung
+  echo "<script language=\"JavaScript\" charset=\"iso-8859-1\" type=\"text/javascript\">\n";
+  echo "<!--\n";
+  echo "  // Primitive Browsererkennung/-weiche\n";
+  echo "  var nav3plus = false; // Initialisierung\n";
+  echo "  if (navigator.userAgent.indexOf (\"Mozilla\") != -1) {\n";
+  echo "    nav3plus = parseInt(navigator.appVersion.substring(0,1)) >= 3\n";
+  echo "  }\n";
+  echo "  // Frameset schreiben\n";
+  echo "  if (nav3plus) {\n";
+  echo "    with (document) {\n";
+  echo "      $javascript_frameset_output";
+  echo "    }\n";
+  echo "  }\n";
+  echo "  // Wenn nicht (Netscape) Navigator 3.0 oder neuer, alternative Ausgabe desselben Framesets verwenden\n";
+  echo "  else {\n";
+  echo "    $javascript_frameset_output";
+  echo "  }\n";
+  echo "//-->\n";
+  echo "</script>\n\n";
+
+  // Nicht JavaScript Frameerstellung
+  echo "<!-- Wenn der Browser JavaScript nicht unterstuetzt oder es deaktiviert wurde, wird folgendes Frameset benutzt -->\n";
+  echo "<noscript>\n";
+
+  // HTML-Frameset erstellen (ohne JavaScript - und ohne setzen der javascript_enabled Variable)
+  echo "<frameset rows=\"<<top_height>>,*\" border=\"0\" frameborder=\"0\" framespacing=\"0\">\n";
+  echo "    <frame name=\"top\" marginheight=\"0\" marginwidth=\"10\" SRC=\"shop/Frameset/top.php?".session_name()."=".session_id()."&amp;last_login=".$last_login."\" scrolling=\"NO\" frameborder=\"0\" noresize></frame>\n";
+  echo "    <frameset cols=\"<<left_width>>,*\" border=\"0\" frameborder=\"0\" framespacing=\"0\">\n";
+  echo "        <frame name=\"left\" src=\"shop/USER_ARTIKEL_HANDLING_AUFRUF.php?darstellen=4&amp;".session_name()."=".session_id()."\" scrolling=\"AUTO\" frameborder=\"0\" noresize></frame>\n";
+  echo "        $contentframe\n";
+  echo "    </frameset>\n";
+  echo "</frameset>\n";
+  echo "</noscript>\n";
+  echo "\n";
+
+  // Noframes Abschnitt - Ausgabe der Meldung fuer Browser ohne Frames
+  echo "<noframes>\n";
+  echo "    <body class=\"content\" link=\"black\" vlink=\"black\" alink=\"black\" text=\"black\" bgcolor=\"white\">\n";
+  echo "        <p>Herzlich Willkommen</p>\n";
+  echo "        <p>Unser Shop ist mit Frames aufgebaut. Frames werden von Ihrem Browser aber nicht unterst&uuml;tzt.</p>\n";
+  echo "        <p>Sie k&ouml;nnen den neuen<br>\n";
+  echo "        <a href=\"http://www.mozilla.org\">Mozilla Browser</a><br>\n";
+  echo "        oder den<br>\n";
+  echo "        <a href=\"http://www.netscape.com\">Netscape Browser</a><br>\n";
+  echo "        oder den<br>\n";
+  echo "        <a href=\"http://www.microsoft.com\">Microsoft Internet Explorer</a><br>\n";
+  echo "        herunterladen.</p>\n";
+  echo "    </body>\n";
+  echo "</noframes>\n\n";
+
+  // HTML-Footer
+  echo "</html>\n";
+
+  // Backup Einstellungen (Automatisierung je nach Administrationseinstellung)
+  <<backup>>
+
+  // End of file -------------------------------------------------------------------------------------
+?>

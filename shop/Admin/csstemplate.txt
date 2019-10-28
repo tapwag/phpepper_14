@@ -1,0 +1,111 @@
+/* Filename: shopstyles.css (wird aus Admin/shopstyles.txt generiert)                            */
+/*                                                                                               */
+/* Modul: CSS                                                                                    */
+/*                                                                                               */
+/* Autoren: José Fontanil & Reto Glanzmann                                                       */
+/*                                                                                               */
+/* Zweck: Beinhaltet alle Schrift-, Farb-, und Hintergrundeinstellungen                          */
+/*                                                                                               */
+/* Sicherheitsstatus:        *** ADMIN ***                                                       */
+/*                                                                                               */
+/* Version: 1.4                                                                                  */
+/*                                                                                               */
+/* CVS-Version / Datum: $Id: csstemplate.txt,v 1.17 2003/05/24 18:41:38 fontajos Exp $           */
+/*                                                                                               */
+/* ----------------------------------------------------------------------------------------------*/
+/* ! ! ! ! ! ! ! ! ! ! ! ! ! W I C H T I G E R   H I N W E I S ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! ! */
+/* ----------------------------------------------------------------------------------------------*/
+/* Wenn Sie die CSS-Einstellungen direkt im CSS-File auf Ihre Beduerfnisse anpassen wollen, be-  */
+/* arbeiten Sie keinesfalls das File "shopstyle.css". Dieses wird bei jedem Aufruf des Layout-   */
+/* management-Tools überschrieben. Manuelle Änderungen der CSS-Einstellungen dürfen deshalb      */
+/* nur im CSS-Template-File (csstemplate.txt) gemacht werden. Alle Ausdruecke in << >> sind Werte*/
+/* die in der Datenbank gespeichert sind. Nachdem Sie manuelle Änderungen gemacht haben, muessen */
+/* Sie das Web-Layoutmanagementtool aufrufen, um damit das neue "shopstyle.css" File zu erzeugen!*/
+/* ----------------------------------------------------------------------------------------------*/
+/*                                                                                               */
+/* ----------------------------------------------------------------------------------------------*/
+/* Stylesheetdatei für Webshop                                                                   */
+/* ----------------------------------------------------------------------------------------------*/
+
+/* Globale Einstellungen                                                                         */
+/* ---------------------                                                                         */
+
+/* Fontfamilie und Textgroesse für die Standardeinstellung und <p>-tag */
+body  { font-size:<<main_font_s>>; font-family: <<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+P { font-size:<<main_font_s>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+
+/* Eingabefelder benutzen ein vordefiniertes Fontset mit fester Breite, da Netscape 4.7 sonst die Feldlaenge nicht ordungsgemaess darstellt */
+input, textarea { font-family: Courier New, Courier, Monaco }
+
+
+/* Einstellungen für linkes Frame (Kategorienliste)                                              */
+/* ------------------------------------------------                                              */
+
+/* Hintergrundfarbe und Hintergrundbild */
+/* Die Verdoppelung der body-Zeile ist fuer die Opera/Windows-Kombination notwendig              */
+/* Netscape 4.xx interpretiert fuer die Links nur die dritte Zeile */
+body.left { color:<<left_font_c>>; background:<<left_bg_c>>; <<left_bg_img>> }
+body.left { color:<<left_font_c>>; background:<<left_bg_c>>; <<left_bg_img>> }
+body.left, a.left { color:<<left_font_c>>; text-decoration:<<left_font_d>>; font-style:<<left_font_i>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>>; font-size:<<left_font_s>>; font-weight:<<left_font_w>>;}
+
+/* Farbe und Schriftart der Links */
+a:link.left { color:<<left_font_c>>; font-style:<<left_font_i>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>>; font-size:<<left_font_s>>; font-weight:<<left_font_w>>; text-decoration:<<left_font_d>>; }
+a:visited.left { color:<<left_font_c>>; font-style:<<left_font_i>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>>; font-size:<<left_font_s>>; font-weight:<<left_font_w>>; text-decoration:<<left_font_d>>; }
+a:active.left { color:<<left_font_c>>; font-style:<<left_font_i>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>>; font-size:<<left_font_s>>; font-weight:<<left_font_w>>; text-decoration:<<left_font_d>>; }
+a:hover.left { color:<<left_font_hover_c>>;  font-style:<<left_font_hover_i>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>>; font-size:<<left_font_hover_s>>; font-weight:<<left_font_hover_w>>; text-decoration:<<left_font_hover_d>>; }
+
+
+/* Einstellungen für oberes Frame (Top-Frame) */
+/* ------------------------------------------ */
+
+/* Hintergrundfarbe und Hintergrundbild */
+/* Verdoppelung fuer Netscape 4.xx noetig */
+body.top, tr.top ,td.top, a.top { background:<<top_bg_c>>; <<top_bg_img>> font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+
+/* Titel-Tag Einstellungen fuer den Shopnamen im Top-Frame */
+td.top_titel { color:<<top_font_c>>; font-style:<<top_font_i>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>>; font-size:<<top_font_s>>; font-weight:<<top_font_w>>; text-decoration:<<top_font_d>>; }
+
+/* Titel-Tag Einstellungen fuer den Administrationsstern im Top-Frame */
+td.top_stern { color:<<top_stern_c>>; font-style:<<top_stern_i>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>>; font-size:<<top_stern_s>>; font-weight:<<top_stern_w>>; text-decoration:<<top_stern_d>>; }
+a:link.top_stern { color:<<top_stern_c>>; font-style:<<top_stern_i>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>>; font-size:<<top_stern_s>>; font-weight:<<top_stern_w>>; text-decoration:<<top_stern_d>>; }
+a:visited.top_stern { color:<<top_stern_c>>; font-style:<<top_stern_i>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>>; font-size:<<top_stern_s>>; font-weight:<<top_stern_w>>; text-decoration:<<top_stern_d>>; }
+a:active.top_stern { color:<<top_stern_c>>; font-style:<<top_stern_i>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>>; font-size:<<top_stern_s>>; font-weight:<<top_stern_w>>; text-decoration:<<top_stern_d>>; }
+
+
+/* Einstellungen für Hauptframe Frame (Shopartikel) */
+/* ------------------------------------------------ */
+
+/* Hintergrundfarbe und Hintergrundbild */
+/* Zweite Zeile wird nur fuer Netscape 4.xx benoetigt */
+body.content { color:<<main_font_c>>; background: <<main_bg_c>>; <<main_bg_img>> }
+a.content, tr.content, td.content { color:<<main_font_c>>; font-style:<<main_font_i>>; font-size:<<main_font_s>>; text-decoration:<<main_font_d>>; font-weight:<<main_font_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+
+/* Farbe und Schriftart der Links */
+a:link.content { color:<<main_link_c>>; font-style:<<main_link_i>>; font-size:<<main_link_s>>; text-decoration:<<main_link_d>>; font-weight:<<main_link_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+a:visited.content { color:<<main_link_c>>; font-style:<<main_link_i>>; font-size:<<main_link_s>>; text-decoration:<<main_link_d>>; font-weight:<<main_link_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+a:active.content { color:<<main_link_c>>; font-style:<<main_link_i>>; font-size:<<main_link_s>>; text-decoration:<<main_link_d>>; font-weight:<<main_link_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+
+/* Farbe und Schriftart der Ueberschriften */
+h1.content { color:<<main_h1_c>>; font-style:<<main_h1_i>>; font-size:<<main_h1_s>>; text-decoration:<<main_h1_d>>; font-weight:<<main_h1_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+h2.content { color:<<main_h2_c>>; font-style:<<main_h2_i>>; font-size:<<main_h2_s>>; text-decoration:<<main_h2_d>>; font-weight:<<main_h2_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+h3.content { color:<<main_h3_c>>; font-style:<<main_h3_i>>; font-size:<<main_h3_s>>; text-decoration:<<main_h3_d>>; font-weight:<<main_h3_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+h4.content { color:<<main_h4_c>>; font-style:<<main_h4_i>>; font-size:<<main_h4_s>>; text-decoration:<<main_h4_d>>; font-weight:<<main_h4_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+h5.content { color:<<main_h5_c>>; font-style:<<main_h5_i>>; font-size:<<main_h5_s>>; text-decoration:<<main_h5_d>>; font-weight:<<main_h5_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+
+/* Eingabefelder benutzen ein vordefiniertes Fontset mit fester Breite, da Netscape 4.7 sonst die Feldlaenge nicht ordungsgemaess darstellt */
+input.content, textarea.content { font-family: Courier, Courier New, Monaco }
+
+/* Spezielle Linkklasse, wo der Link nicht unterstrichen wird (für Suchresultat)                 */
+/* ----------------------------------------------------------------------------                  */
+body.no_decoration { color:<<main_font_c>>; background: <<main_bg_c>>; <<main_bg_img>> }
+body.no_decoration, a.no_decoration, tr.no_decoration, td.no_decoration { text-decoration:none; color:<<main_font_c>>; font-style:<<main_font_i>>; font-size:<<main_font_s>>; text-decoration:<<main_font_d>>; font-weight:<<main_font_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+a:link.no_decoration { color:<<main_font_c>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>>; font-size:16px; "font-weight:<<link_no_dec>>; text-decoration:none; }
+a:visited.no_decoration { color:<<main_font_c>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>>; font-size:16px; font-weight:<<link_no_dec>>; text-decoration:none; }
+a:active.no_decoration { color:<<main_font_c>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>>; font-size:16px; font-weight:<<link_no_dec>>; text-decoration:none; }
+h1.no_decoration { color:<<main_font_c>>; font-style:<<main_h1_i>>; font-size:<<main_h1_s>>; text-decoration:none; font-weight:<<main_h1_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+h2.no_decoration { color:<<main_font_c>>; font-style:<<main_h2_i>>; font-size:<<main_h2_s>>; text-decoration:none; font-weight:<<main_h2_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+h3.no_decoration { color:<<main_font_c>>; font-style:<<main_h3_i>>; font-size:<<main_h3_s>>; text-decoration:none; font-weight:<<main_h3_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+h4.no_decoration { color:<<main_font_c>>; font-style:<<main_h4_i>>; font-size:<<main_h4_s>>; text-decoration:none; font-weight:<<main_h4_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+h5.no_decoration { color:<<main_font_c>>; font-style:<<main_h5_i>>; font-size:<<main_h5_s>>; text-decoration:none; font-weight:<<main_h5_w>>; font-family:<<fontset_1>><<fontset_2>><<fontset_3>><<fontset_4>><<fontset_5>> }
+
+/* End of file ----------------------------------------------------------------                   */

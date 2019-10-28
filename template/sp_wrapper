@@ -1,0 +1,58 @@
+#!/usr/bin/perl -w
+# ------------------------------------------------------------------------------------------
+# PhPepperShop Saferpay Wrapper  -  http://www.phpeppershop.com/
+# Uebernimmt die Saferpay PayInit, PayConfirm und PayComplete Kommandos und ruft dann erst
+# den eigentlichen Saferpay Client auf. Dies war noetig, weil die Parameteruebergabe von
+# PHP zum Saferpay Client je nach Konfiguration nicht funktionieren wuerde. Je nach System
+# muss dieser PERL-Wrapper noch etwas an das Serverbetriebssystem angepasst werden, so dass
+# die Uebergabe der Daten funktioniert. Hier verwenden wir z.B. standardmaessig den exec()-
+# Befehl. Manchmal ist ein Call mit system aber besser...
+#
+# Der Perl Interpreter wird in /usr/bin/perl erwartet. Ansonsten muss die erste Zeile dieses
+# Scripts entsprechend angepasst werden.
+#
+# Sicherheitsstatus:       *** ADMIN ***
+#
+# $Id: sp_wrapper,v 1.2 2003/09/26 16:22:33 glanzret Exp $
+# $Source: /cvs/phpeppershop/src/template/sp_wrapper,v $
+# ------------------------------------------------------------------------------------------
+# Lizenz
+# ======
+# PhPepperShop Shopsystem
+# Copyright (C) 2001  Reto Glanzmann, José Fontanil
+# ------------------------------------------------------------------------------------------
+
+# Variableninitialisierung
+my $saferpay_script = '/opt/saferpay/saferpay'; # Aufrufpfad fuer Saferpay-Script
+my $aufruf = '';
+my $antwort = '';
+my $erstes = 1;
+
+# Alle von PHP erhaltenen Argumente zu einem String zusammenfuegen
+foreach my $argument (@ARGV) {
+    if($erstes) {
+        # erstes Argument (Saferpay-Programm-Aufruf wird aus sicherheitsgründen hier fest gesetzt)
+        $aufruf.=$saferpay_script.' ';
+	$erstes = 0;
+    }
+    else {
+        $aufruf.= $argument.' ';
+    }
+} # end of foreach
+
+# Alle Strichpunkte ';' werden zur Sicherheit aus dem Aufruf entfernt, damit keine 
+#weiteren Programme aufgerufen werden können!
+$aufruf =~ s/\;//g;
+
+# Eigentliches Saferpay Script aufrufen
+$antwort = exec($aufruf);
+
+# Via Standard Out geben wir die Antwort des aufgerufenen Saferpay Scripts zurueck
+print "$antwort";
+
+# Debugging: Umleitung in eine Datei
+#open(HANDLE,">/usr/lib/php_safe_mode_exec_dir/got_that");
+#close(HANDLE);
+
+# End of file ------------------------------------------------------------------------------
+

@@ -1,0 +1,6 @@
+AuthUserFile /home/shopname/.htpasswd
+AuthName "Administrationsbereich"
+AuthType Basic
+<Limit GET POST>
+require valid-user
+</Limit>
