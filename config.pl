@@ -10,6 +10,13 @@
 # Dieses Script installiert einen PhPepperShop via Kommandozeile / Telnet / SSH
 #---------------------------------------------
 
+
+# Für neuere Perl-Versionen erforderlich
+ BEGIN {
+     push @INC, '.';
+ }
+
+
 #----------------------------------------
 # Benoetigte Module einbinden
 #----------------------------------------
